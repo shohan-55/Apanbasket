@@ -447,8 +447,10 @@ label {
 
 .ab-announce__track {
     display: flex;
+    flex-shrink: 0;
     align-items: center;
     gap: 34px;
+    width: max-content;
     white-space: nowrap;
     animation: ab-marquee 34s linear infinite;
 }
