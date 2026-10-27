@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+    <rect width="400" height="400" fill="#f5efe1"/>
+    <circle cx="200" cy="176" r="88" fill="#eaf2d7"/>
+    <path d="M185 160c-16-6-26-18-25-36 17 2 27 15 25 36Z" fill="#7fb03a"/>
+    <path d="M188 160c16-6 26-18 25-36-17 2-27 15-25 36Z" fill="#1a7a44"/>
+    <path d="M139 196h106c-4 27-25 46-53 46s-49-19-53-46Z" fill="#10512e"/>
+    <path d="M135 196h114" stroke="#10512e" stroke-width="11" stroke-linecap="round"/>
+    <text x="200" y="300" text-anchor="middle" font-family="Poppins, Helvetica, Arial, sans-serif" font-size="15" font-weight="600" letter-spacing="4" fill="#6c7b71">APONBASKET</text>
+</svg>
