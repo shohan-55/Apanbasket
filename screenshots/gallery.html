@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AponBasket theme — screenshots</title>
+    <style>
+        :root {
+            --green-900: #0b3a21;
+            --green: #1a7a44;
+            --leaf: #7fb03a;
+            --cream: #fcf9f2;
+            --line: #e7dfcd;
+            --muted: #6c7b71;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 44px 20px 80px;
+            background:
+                radial-gradient(800px 400px at 90% -5%, rgba(127, 176, 58, .18), transparent 60%),
+                var(--cream);
+            color: #1e2a23;
+            font-family: "Poppins", "Segoe UI", system-ui, sans-serif;
+        }
+
+        header { max-width: 1160px; margin: 0 auto 40px; }
+
+        .eyebrow {
+            display: inline-flex; align-items: center; gap: 10px;
+            font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+            color: var(--green); font-weight: 600;
+        }
+
+        .eyebrow::before { content: ""; width: 26px; height: 2px; border-radius: 2px; background: linear-gradient(90deg, var(--leaf), var(--green)); }
+
+        h1 {
+            font-family: "Fraunces", Georgia, serif;
+            font-size: clamp(28px, 4vw, 44px);
+            line-height: 1.08;
+            color: var(--green-900);
+            margin: 14px 0 10px;
+            letter-spacing: -.02em;
+        }
+
+        h1 em { font-style: italic; color: var(--green); }
+
+        header p { color: var(--muted); max-width: 70ch; font-size: 14.5px; line-height: 1.7; margin: 0; }
+
+        .meta {
+            display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px;
+        }
+
+        .chip {
+            font-size: 11.5px; font-weight: 600; letter-spacing: .04em;
+            padding: 7px 14px; border-radius: 999px;
+            background: #fff; border: 1px solid var(--line); color: var(--green-900);
+        }
+
+        .chip--leaf { background: #eaf2d7; border-color: #d5e4b8; color: var(--green-900); }
+
+        .grid { max-width: 1160px; margin: 0 auto; display: grid; gap: 30px; }
+
+        figure {
+            margin: 0;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            padding: 14px;
+            box-shadow: 0 18px 44px -30px rgba(20, 48, 30, .45);
+        }
+
+        figure img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid var(--line);
+        }
+
+        figcaption {
+            display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+            padding: 14px 8px 4px;
+            flex-wrap: wrap;
+        }
+
+        figcaption b { font-size: 14.5px; color: var(--green-900); }
+
+        figcaption span { font-size: 12px; color: var(--muted); }
+
+        figcaption a { color: var(--green); font-size: 12px; font-weight: 600; text-decoration: none; border-bottom: 1px solid transparent; }
+
+        figcaption a:hover { border-bottom-color: currentColor; }
+
+        .pair { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+
+        .pair figure img { border-radius: 12px; }
+
+        footer {
+            max-width: 1160px; margin: 52px auto 0; padding-top: 22px;
+            border-top: 1px solid var(--line);
+            font-size: 12.5px; color: var(--muted);
+            display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+        }
+
+        footer a { color: var(--green); text-decoration: none; }
+
+        @media (max-width: 860px) {
+            .pair { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <span class="eyebrow">AponBasket · Bagisto theme</span>
+
+        <h1>Theme <em>screenshots</em></h1>
+
+        <p>
+            Rendered from <code>preview/page.html</code> in headless Chromium at 1440&nbsp;px,
+            768&nbsp;px and 414&nbsp;px. Same markup, CSS and artwork the Bagisto theme ships,
+            so these are what the storefront looks like after activation.
+        </p>
+
+        <div class="meta">
+            <span class="chip chip--leaf">Homepage · desktop 1440px</span>
+            <span class="chip">Tablet 768px</span>
+            <span class="chip">Mobile 414px</span>
+            <span class="chip">Full page + hero viewports</span>
+        </div>
+    </header>
+
+    <div class="grid">
+        <figure>
+            <img src="home-desktop-hero.png" alt="AponBasket homepage hero on desktop" loading="eager">
+            <figcaption>
+                <div>
+                    <b>01 · Hero, announcement bar and header</b>
+                    <span>Desktop 1440 × 900</span>
+                </div>
+                <a href="home-desktop-hero.png" target="_blank" rel="noopener">Open full size ↗</a>
+            </figcaption>
+        </figure>
+
+        <figure>
+            <img src="home-desktop-full.jpg" alt="Full AponBasket homepage on desktop" loading="lazy">
+            <figcaption>
+                <div>
+                    <b>02 · Full homepage — hero → promises → categories → best sellers → promo → story → why → steps → testimonials → CTA → footer</b>
+                    <span>Desktop 1440 × 7023</span>
+                </div>
+                <a href="home-desktop-full.jpg" target="_blank" rel="noopener">Open full size ↗</a>
+            </figcaption>
+        </figure>
+
+        <div class="pair">
+            <figure>
+                <img src="home-tablet-hero.png" alt="Hero on tablet" loading="lazy">
+                <figcaption>
+                    <div>
+                        <b>03 · Tablet</b>
+                        <span>768 × 1000</span>
+                    </div>
+                </figcaption>
+            </figure>
+
+            <figure>
+                <img src="home-mobile-hero.png" alt="Hero on mobile" loading="lazy">
+                <figcaption>
+                    <div>
+                        <b>04 · Mobile hero</b>
+                        <span>414 × 860</span>
+                    </div>
+                </figcaption>
+            </figure>
+
+            <figure style="display:flex; align-items:flex-start;">
+                <img src="home-mobile-full.jpg" alt="Full homepage on mobile" loading="lazy" style="max-height:640px; width:auto;">
+                <figcaption>
+                    <div>
+                        <b>05 · Mobile, full page</b>
+                        <span>414 × 10634</span>
+                    </div>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <footer>
+        <span>AponBasket — Natural &amp; Organic Products · Bagisto storefront theme</span>
+        <span><a href="../preview/page.html">Interactive preview</a> · <a href="../docs/INSTALL.md">Install guide</a></span>
+    </footer>
+</body>
+</html>

@@ -67,6 +67,15 @@
    2. Base
    -------------------------------------------------------------------------- */
 
+/* Bagisto's Tailwind preflight already does this; it is repeated here so the
+   theme also renders correctly when the stylesheet is used on its own
+   (e.g. the static preview in /preview). */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
@@ -104,7 +113,11 @@ p {
     color: var(--ab-ink-soft);
 }
 
+/* Same normalisation Bagisto's Tailwind preflight applies, repeated so the
+   theme (and its standalone preview) never shows default blue underlines. */
 a {
+    color: inherit;
+    text-decoration: inherit;
     transition: color 0.2s var(--ab-ease), opacity 0.2s var(--ab-ease);
 }
 
@@ -1189,7 +1202,7 @@ nav[role="navigation"] {
     padding-block: 22px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     font-size: 12.5px;
-    color: #a9c3a0;
+    color: #bcd2b1;
     flex-wrap: wrap;
 }
 
@@ -1280,6 +1293,12 @@ nav[role="navigation"] {
     align-items: center;
     gap: 10px;
     line-height: 1;
+    text-decoration: none;
+}
+
+/* the lockup sits inside theme links (<a class="ab-logo">), keep it clean */
+.ab-brand *,
+.ab-brand:hover * {
     text-decoration: none;
 }
 
@@ -1539,7 +1558,12 @@ nav[role="navigation"] {
 @media (max-width: 1280px) {
     .ab-nav { gap: 16px; }
     .ab-nav a { font-size: 12.5px; }
-    .ab-searchbar { width: min(260px, 26vw); }
+    .ab-searchbar:not(.ab-searchbar--mobile) { width: min(260px, 26vw); }
+}
+
+/* the mobile search always spans the header */
+.ab-header-mobile .ab-searchbar--mobile {
+    width: 100%;
 }
 
 @media (max-width: 1360px) {

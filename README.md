@@ -59,10 +59,19 @@ Admin → **Settings → Channels → Design/Theme → AponBasket Organic → Sa
 
 ---
 
-## 🖼 প্রিভিউ
+## 🖼 প্রিভিউ ও স্ক্রিনশট
 
-- **লাইভ প্রিভিউ:** `preview/page.html` — পুরো ডিজাইনের স্ট্যাটিক HTML (Bagisto ছাড়াই খোলা যায়)।
+- **স্ক্রিনশট গ্যালারি:** [`screenshots/gallery.html`](screenshots/gallery.html) — ডেস্কটপ (1440px), ট্যাবলেট (768px) ও মোবাইল (414px) ভিউ।
+- **লাইভ প্রিভিউ:** `preview/page.html` — পুরো ডিজাইনের স্ট্যাটিক HTML (Bagisto ছাড়াই খোলা যায়, ফন্ট লোকাল)।
 - **আসল সাইট:** ইনস্টলের পর `https://aponbasket.com`।
+
+| ফাইল | কী দেখায় |
+| --- | --- |
+| `screenshots/home-desktop-hero.png` | হেডার + হিরো (1440 × 900) |
+| `screenshots/home-desktop-full.jpg` | পুরো হোমপেজ (1440 × 7023) |
+| `screenshots/home-tablet-hero.png` | ট্যাবলেট (768 × 1000) |
+| `screenshots/home-mobile-hero.png` | মোবাইল হিরো (414 × 860) |
+| `screenshots/home-mobile-full.jpg` | মোবাইল পুরো পেজ (414 × 10634) |
 
 ---
 
