@@ -115,6 +115,47 @@ final class AponBasketThemeTest extends AdminTestCase
             ->assertDontSee('ab-hero__copy', false);
     }
 
+    public function test_default_footer_credits_store_and_designer_on_storefront_pages(): void
+    {
+        $this->artisan('aponbasket:install', ['--channel' => $this->channel->code])->assertExitCode(0);
+        core()->setCurrentChannel($this->channel);
+
+        foreach ([route('shop.home.index'), route('shop.home.contact_us')] as $url) {
+            $this->get($url)
+                ->assertOk()
+                ->assertSee('© '.date('Y').' AponBasket.')
+                ->assertSee('সর্বস্বত্ব সংরক্ষিত।')
+                ->assertSee('ডিজাইন: ঢাকা ওলা')
+                ->assertDontSee('Webkul Software (Registered in India)');
+        }
+    }
+
+    public function test_footer_keeps_merchant_copyright_setting_and_sanitizes_it(): void
+    {
+        $this->artisan('aponbasket:install', ['--channel' => $this->channel->code])->assertExitCode(0);
+        core()->setCurrentChannel($this->channel);
+        DB::table('core_config')->insert([
+            'code' => 'general.content.footer.copyright_content',
+            'value' => 'নিজস্ব কপিরাইট <script>alert(42)</script> {{ 7 * 7 }}',
+            'channel_code' => $this->channel->code,
+            'locale_code' => $this->locale,
+        ]);
+
+        $this->get(route('shop.home.index', ['channel' => $this->channel->code, 'locale' => $this->locale]))
+            ->assertOk()
+            ->assertSee('নিজস্ব কপিরাইট')
+            ->assertDontSee('ডিজাইন: ঢাকা ওলা')
+            ->assertDontSee('<script>alert(42)</script>', false)
+            ->assertDontSee('{{ 7 * 7 }}', false)
+            ->assertSee('<span v-pre>', false);
+
+        $other = Channel::factory()->create(['theme' => Defaults::THEME]);
+        core()->setCurrentChannel($other);
+        $this->get(route('shop.home.index', [
+            'channel' => $other->code, 'locale' => $other->locales->firstOrFail()->code,
+        ]))->assertOk()->assertSee('ডিজাইন: ঢাকা ওলা')->assertDontSee('নিজস্ব কপিরাইট');
+    }
+
     public function test_order_and_visibility_are_drafted_then_published(): void
     {
         $this->artisan('aponbasket:install', ['--channel' => $this->channel->code])->assertExitCode(0);
@@ -153,7 +194,9 @@ final class AponBasketThemeTest extends AdminTestCase
 
         $this->get(route('shop.home.index'))
             ->assertOk()
-            ->assertDontSee('themes/shop/aponbasket/css/aponbasket.css', false);
+            ->assertDontSee('themes/shop/aponbasket/css/aponbasket.css', false)
+            ->assertSee('Webkul Software (Registered in India)')
+            ->assertDontSee('ডিজাইন: ঢাকা ওলা');
     }
 
     public function test_bengali_editor_font_is_scoped_to_aponbasket_sections(): void

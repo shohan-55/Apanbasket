@@ -1,6 +1,6 @@
 # AponBasket Organic — সম্পাদনাযোগ্য Bagisto থিম
 
-**সংস্করণ: 2.0.1** · থিম কোড: `aponbasket`
+**সংস্করণ: 2.0.2** · থিম কোড: `aponbasket`
 
 আপনার দেওয়া AponBasket v1.1 ডিজাইনের রং, ছবি, লেখা ও বিন্যাসকে ভিত্তি করে তৈরি এই সংস্করণে হোমপেজের অংশগুলো Bagisto-এর নিজস্ব **Appearance → Themes → Customize** সম্পাদক থেকে বদলানো যায়। পণ্য ও ক্যাটাগরি আসল Bagisto ক্যাটালগ থেকে আসে; এই প্যাকেজ কোনো নমুনা পণ্য বা দাম আপনার ডেটাবেজে ঢোকায় না। Bagisto core package ফাইল পরিবর্তন করা হয়নি।
 
@@ -89,6 +89,12 @@ php artisan optimize:clear
 - পণ্যের নাম, ছবি, মূল্য, stock, category ও channel assignment **Catalog** থেকে আসে, theme editor থেকে নয়। Header/menu/logo-এর তথ্য Bagisto settings/catalog থেকে আসে; checkout Bagisto-এরই থাকে। রং, নতুন layout বা নতুন ধরনের সম্পূর্ণ section বানাতে এখনো developer-এর CSS/Blade/PHP কাজ প্রয়োজন—এটি একটি editable foundation, সর্বক্ষেত্রে no-code page builder নয়।
 - Link-এ `/search`, `search?query=ghee`, `#ab-our-promise` বা সম্পূর্ণ `https://...` ব্যবহার করা যায়। বদলানোর পরে destination কাজ করছে কি না যাচাই করুন। Image file, image alt text এবং desktop/mobile crop নিজে দেখে নিন।
 
+### নিচের কপিরাইট ও ডিজাইনারের নাম
+
+Copyright Content খালি থাকলে AponBasket থিমের footer-এ `© বর্তমান বছর AponBasket. সর্বস্বত্ব সংরক্ষিত। | ডিজাইন: ঢাকা ওলা` দেখায়; বছরটি স্বয়ংক্রিয়ভাবে পরিবর্তিত হয়। শুধু storefront-এর এই লেখা বদলায়—Bagisto সফটওয়্যারের মূল লাইসেন্স বা source copyright notice মুছে ফেলা হয় না।
+
+লেখাটি নিজের মতো পরিবর্তন করতে Admin → **Configure → General → Content → Copyright Content**-এ সঠিক channel ও locale বেছে পুরো লেখাটি লিখে Save করুন। আগে থেকে কোনো copyright content সেট থাকলে সেটিই অগ্রাধিকার পাবে; update কোনো existing setting overwrite করে না। নিজস্ব লেখা ব্যবহার করলে সেখানে ডিজাইনারের নামও নিজে লিখতে হবে, এবং লিখে দেওয়া বছর স্বয়ংক্রিয়ভাবে বদলাবে না।
+
 ## সমস্যা হলে
 
 - **Theme/command দেখা যাচ্ছে না:** সঠিক Bagisto version ও `bootstrap/providers.php` entry দেখুন, `php artisan optimize:clear` চালান।
@@ -105,7 +111,7 @@ Provider সরানো, migration rollback বা database table/marker মু
 
 ## পরীক্ষার তথ্য ও সীমাবদ্ধতা
 
-- Bagisto 2.4.13 এবং 2.5.0-এ PHP 8.4 দিয়ে পৃথক integration suite: **৮টি test, ৮৩টি assertion** প্রতিটিতে। Installer preservation, theme isolation, native editor fields/draft/upload/preview/publish এবং reorder/status পরীক্ষা করা হয়েছে।
+- Bagisto 2.4.13 এবং 2.5.0-এ PHP 8.4 দিয়ে পৃথক integration suite: **১০টি test, ১০৬টি assertion** প্রতিটিতে। Installer preservation, theme isolation, footer default ও custom setting, native editor fields/draft/upload/preview/publish এবং reorder/status পরীক্ষা করা হয়েছে।
 - Bagisto 2.4.13/PHP 8.3-এ GD ছাড়া পরীক্ষার জন্য upload test বাদে বাকি tests চালানো হয়েছে। Bagisto 2.5-এর একটি বিচ্ছিন্ন browser test-এ editor থেকে Bengali text ও ছবি বদলে preview, publish ও storefront ফলও যাচাই করা হয়েছে। Desktop/mobile storefront-এ responsive layout ও image loading smoke-tested।
 - পরীক্ষামূলক ডেটাবেজ ছিল SQLite; upstream Bagisto migrations/seeder চালাতে শুধু test environment-এ SQLite compatibility adjustments দরকার হয়েছিল। এগুলো এই প্যাকেজে নেই। **MySQL/MariaDB, আপনার live site, payment ও বাস্তব checkout end-to-end পরীক্ষা করা হয়নি।** Production-এ নিশ্চিত করতে আপনার নিজের staging-এ সেসব পরীক্ষা আবশ্যক।
 

@@ -77,7 +77,7 @@ namespace {
         }
         $count++;
     }
-    check($count === 12, 'Expected twelve theme views');
+    check($count === 13, 'Expected thirteen theme views');
 
     // Render an actual compiled partial: dynamic text is escaped and unsafe URLs
     // are omitted even if a malformed value somehow reaches the view.

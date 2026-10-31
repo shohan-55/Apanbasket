@@ -10,7 +10,7 @@ final class Defaults
 {
     public const THEME = 'aponbasket';
 
-    public const VERSION = '2.0.1';
+    public const VERSION = '2.0.2';
 
     private const IMAGES = 'themes/shop/aponbasket/images/';
 

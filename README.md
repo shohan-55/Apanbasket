@@ -10,6 +10,6 @@ GitHub থেকে cPanel Terminal-এ থিম আপডেট করার �
 
 ![AponBasket ডেস্কটপ ডিজাইনের উপরের অংশ](docs/screenshots/desktop-top-demo.png)
 
-[সম্পূর্ণ ডেস্কটপ স্ক্রিনশট](docs/screenshots/desktop-full-demo.png) · [সম্পূর্ণ মোবাইল স্ক্রিনশট](docs/screenshots/mobile-full-demo.png)
+[সম্পূর্ণ ডেস্কটপ স্ক্রিনশট](docs/screenshots/desktop-full-demo.png) · [সম্পূর্ণ মোবাইল স্ক্রিনশট](docs/screenshots/mobile-full-demo.png) · [ফুটারের স্ক্রিনশট](docs/screenshots/footer-demo.png)
 
 Editable Bagisto theme, setup, testing and rollback: [README-BN.md](README-BN.md). GitHub and cPanel deployment: [CPANEL-GITHUB-BN.md](CPANEL-GITHUB-BN.md).
