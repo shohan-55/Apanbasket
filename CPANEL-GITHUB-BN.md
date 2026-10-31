@@ -13,17 +13,17 @@ git --version
 php -v
 ```
 
-নিচের উদাহরণে পরীক্ষিত কাজের branch `arena/811990de-apanbasket` ব্যবহার করা হয়েছে। `main`-এ pull request merge হয়েছে কি না আলাদাভাবে GitHub-এ যাচাই করুন। Repository public, তাই code clone করতে GitHub password বা token প্রয়োজন নেই। প্রথমবার:
+নিচের উদাহরণে GitHub-এর `main` branch থেকে একটি **আলাদা source checkout** নেওয়া হচ্ছে। কেবল main-এ merge করা পরিবর্তনই এখানে আসবে। Repository public, তাই code clone করতে GitHub password বা token প্রয়োজন নেই। প্রথমবার:
 
 ```bash
 cd "$HOME"
-git clone --branch arena/811990de-apanbasket --single-branch https://github.com/shohan-55/Apanbasket.git aponbasket-theme-source
-cd "$HOME/aponbasket-theme-source"
+git clone --branch main --single-branch https://github.com/shohan-55/Apanbasket.git aponbasket-main-source
+cd "$HOME/aponbasket-main-source"
 git status --short --branch
 git log -1 --oneline
 ```
 
-আগেই `aponbasket-theme-source` নামে directory থাকলে সেটি মুছে বা replace করবেন না; আগে সেটি কী এবং কোন repository তা যাচাই করুন। Checkout এবং backups ওয়েব থেকে সরাসরি অ্যাক্সেসযোগ্য directory-র বাইরে রাখুন। কেবল clone করায় live Bagisto বদলায় না।
+আগেই `aponbasket-main-source` নামে directory থাকলে সেটি মুছে বা replace করবেন না; আগে সেটি কী এবং কোন repository তা যাচাই করুন। আগের নির্দেশনায় `aponbasket-theme-source` checkout থাকলে সেটিও মুছবেন না; নতুন main checkout তার থেকে আলাদা রাখুন। Checkout এবং backups ওয়েব থেকে সরাসরি অ্যাক্সেসযোগ্য directory-র বাইরে রাখুন। কেবল clone করায় live Bagisto বদলায় না।
 
 ## প্রকৃত Bagisto root নির্ণয়
 
@@ -55,7 +55,7 @@ BAGISTO_ROOT='/সঠিক/staging/Bagisto/project/path'
 3. Theme checkout থেকে **শুধু read-only পরীক্ষা** চালান। এটি কী যোগ/overwrite হবে দেখায়, copy করে না:
 
    ```bash
-   cd "$HOME/aponbasket-theme-source"
+   cd "$HOME/aponbasket-main-source"
    bash scripts/deploy-theme.sh --target "$BAGISTO_ROOT"
    ```
 
@@ -86,9 +86,9 @@ BAGISTO_ROOT='/সঠিক/staging/Bagisto/project/path'
 প্রথমে source checkout-এ যান, GitHub থেকে একই branch-এর সর্বশেষ commit নিন ও পর্যালোচনা করুন:
 
 ```bash
-cd "$HOME/aponbasket-theme-source"
+cd "$HOME/aponbasket-main-source"
 git status --short --branch
-git pull --ff-only origin arena/811990de-apanbasket
+git pull --ff-only origin main
 git log -1 --oneline
 ```
 
