@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="150" viewBox="0 0 620 150" role="img" aria-labelledby="title desc">
+  <title id="title">AponBasket — Natural &amp; Organic Products</title>
+  <desc id="desc">A dark green bowl with fresh leaves beside the AponBasket wordmark and natural organic products tagline.</desc>
+  <defs>
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#83b957"/><stop offset="1" stop-color="#367e39"/></linearGradient>
+    <linearGradient id="word" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#174c2d"/><stop offset="1" stop-color="#347d36"/></linearGradient>
+  </defs>
+  <g transform="translate(8 8)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 71 Q65 87 112 69 L103 101 Q65 119 27 101 Z" fill="#f3f7e9" stroke="#174c2d" stroke-width="5"/>
+    <path d="M21 72 Q65 91 109 72" fill="none" stroke="#174c2d" stroke-width="5"/>
+    <path d="M62 68 C39 48 36 25 43 8 C62 20 73 42 66 67 Z" fill="url(#leaf)" stroke="#174c2d" stroke-width="3"/>
+    <path d="M68 67 C69 38 88 17 111 10 C112 36 95 59 68 67 Z" fill="#2f7837" stroke="#174c2d" stroke-width="3"/>
+    <path d="M65 68 C75 47 93 39 117 40 C105 60 88 69 65 68 Z" fill="#78aa49" stroke="#174c2d" stroke-width="3"/>
+    <path d="M53 57 L46 27 M76 57 L100 22 M78 61 L107 45" fill="none" stroke="#e8f1d8" stroke-width="2.5"/>
+    <path d="M30 111 Q65 123 100 111" fill="none" stroke="#8caf68" stroke-width="3"/>
+  </g>
+  <text x="145" y="84" fill="url(#word)" font-family="Arial, Helvetica, sans-serif" font-size="66" font-weight="800" letter-spacing="-3.1">AponBasket</text>
+  <text x="150" y="119" fill="#42644a" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" letter-spacing="2.2">NATURAL &amp; ORGANIC PRODUCTS</text>
+  <path d="M150 132 Q315 140 485 132" fill="none" stroke="#d8e6c9" stroke-width="2"/>
+</svg>
