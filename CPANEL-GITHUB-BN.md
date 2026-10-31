@@ -1,6 +1,6 @@
 # GitHub থেকে cPanel-এ AponBasket থিম আপডেট
 
-এই repository-তে **শুধু থিমের কোড**, সম্পূর্ণ Bagisto application নয়। আপনার চালু Bagisto-এর folder-এ এই repository `git clone` বা `git pull` করবেন না। তার বদলে cPanel-এর home directory-তে আলাদা theme checkout রাখুন, সেখানে GitHub থেকে pull করুন, তারপর যাচাই করে helper দিয়ে শুধু থিমের তিনটি নির্দিষ্ট folder Bagisto-তে copy করুন।
+এই repository-তে এখন **Bagisto v2.5.0-এর পূর্ণ upstream source এবং AponBasket থিম** আছে। তবে নিচের helper একটি আলাদা source checkout থেকে **শুধু থিমের তিনটি নির্দিষ্ট folder** অন্য একটি আগে থেকে ইনস্টল করা Bagisto project-এ copy করে; এটি Bagisto core update করে না। আপনার ZIP দিয়ে ইনস্টল করা চালু Bagisto-এর folder-এ এই repository সরাসরি `git clone`, `git pull` বা পুরো source overwrite করবেন না। আগে আলাদা staging, version/customization তুলনা, backup এবং পরিকল্পিত migration দরকার।
 
 > প্রথমে আলাদা staging-এ সম্পূর্ণ পরীক্ষা করুন। আপনার বর্তমান Bagisto version, প্রকৃত project path ও server configuration এখনো জানা নেই। Production-এ প্রয়োগের আগে database, project ও media backup এবং maintenance window প্রয়োজন। এই helper production server-এ এখনো পরীক্ষা করা হয়নি। বিস্তারিত compatibility ও rollback: [README-BN.md](README-BN.md)।
 
@@ -13,7 +13,7 @@ git --version
 php -v
 ```
 
-এই সংস্করণটি বর্তমানে `arena/811990de-apanbasket` branch-এ রাখা হয়েছে; `main` branch নয়। Repository public, তাই code clone করতে GitHub password বা token প্রয়োজন নেই। প্রথমবার:
+নিচের উদাহরণে পরীক্ষিত কাজের branch `arena/811990de-apanbasket` ব্যবহার করা হয়েছে। `main`-এ pull request merge হয়েছে কি না আলাদাভাবে GitHub-এ যাচাই করুন। Repository public, তাই code clone করতে GitHub password বা token প্রয়োজন নেই। প্রথমবার:
 
 ```bash
 cd "$HOME"

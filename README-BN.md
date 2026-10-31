@@ -2,13 +2,15 @@
 
 **সংস্করণ: 2.0.3** · থিম কোড: `aponbasket`
 
-আপনার দেওয়া AponBasket v1.1 ডিজাইনের রং, ছবি, লেখা ও বিন্যাসকে ভিত্তি করে তৈরি এই সংস্করণে হোমপেজের অংশগুলো Bagisto-এর নিজস্ব **Appearance → Themes → Customize** সম্পাদক থেকে বদলানো যায়। পণ্য ও ক্যাটাগরি আসল Bagisto ক্যাটালগ থেকে আসে; এই প্যাকেজ কোনো নমুনা পণ্য বা দাম আপনার ডেটাবেজে ঢোকায় না। Bagisto core package ফাইল পরিবর্তন করা হয়নি।
+এই repository-তে Bagisto **v2.5.0-এর সম্পূর্ণ source snapshot** ও AponBasket থিম একসঙ্গে রয়েছে। থিমের PHP, views ও assets যথাক্রমে `app/AponBasket/`, `resources/themes/aponbasket/` এবং `public/themes/shop/aponbasket/`-এ আছে; এই source project-এর `bootstrap/providers.php`-এ provider নিবন্ধিত। নতুন installation-এ installer ও activation আলাদাভাবে করতে হবে। Source-এর উৎস ও নিরাপদ ব্যবহার: [BAGISTO-PROJECT-BN.md](BAGISTO-PROJECT-BN.md)।
+
+আপনার দেওয়া AponBasket v1.1 ডিজাইনের রং, ছবি, লেখা ও বিন্যাসকে ভিত্তি করে তৈরি এই থিমে হোমপেজের অংশগুলো Bagisto-এর নিজস্ব **Appearance → Themes → Customize** সম্পাদক থেকে বদলানো যায়। পণ্য ও ক্যাটাগরি আসল Bagisto ক্যাটালগ থেকে আসে; থিম ইনস্টলার কোনো নমুনা পণ্য বা দাম আপনার ডেটাবেজে ঢোকায় না। Bagisto-এর `packages/Webkul/` core ফাইল পরিবর্তন করা হয়নি।
 
 > **প্রথমে staging-এ পরীক্ষা করুন।** আপনার live Bagisto-এর সংস্করণ ও নিজস্ব পরিবর্তন এই প্যাকেজ তৈরির সময়ে জানা ছিল না। ব্যাকআপ ছাড়া সরাসরি live site-এ প্রয়োগ করবেন না। বিশেষ করে আগে v1.1 চালু থাকলে একই `aponbasket` ফাইলের কিছু অংশ প্রতিস্থাপিত হবে এবং ইনস্টলার শেষ হওয়ার আগে হোমপেজ অসম্পূর্ণ দেখাতে পারে।
 
 ## সংস্করণ ও পূর্বশর্ত
 
-- সম্পূর্ণ আলাদা পরীক্ষামূলক Bagisto **2.4.13** এবং **2.5.0**-এ পরীক্ষা করা হয়েছে। 2.4.13-এ PHP 8.3 ও 8.4 এবং 2.5.0-এ PHP 8.4 প্রয়োজন; আপনার Bagisto-এর নিজস্ব PHP ও extension-এর শর্তও মেনে চলুন।
+- এই repository-এর Bagisto source **2.5.0**, যার জন্য PHP **8.4+** ও প্রয়োজনীয় PHP extensions লাগে। আলাদা theme component-টি পরীক্ষামূলক Bagisto **2.4.13** ও **2.5.0**-এও পরীক্ষা করা হয়েছে; থিমের compatibility মানে এই নয় যে পুরোনো Bagisto-কে এ repo-এর core files দিয়ে overwrite করা নিরাপদ।
 - এই থিমের জন্য নতুন Bagisto Appearance section editor/API দরকার। পুরোনো কিছু 2.4 সংস্করণেও সেটি নেই; কেবল `2.4.x` দেখে সমর্থিত ধরে নেবেন না। অন্য সংস্করণ বা customised Bagisto-তে আগে staging-এ যাচাই ও প্রয়োজনমতো integration পরিবর্তন করতে হবে।
 - একটি ইতিমধ্যে ইনস্টল ও migrate করা Bagisto project, CLI access, database backup, `bootstrap/providers.php` সম্পাদনার অনুমতি এবং admin Appearance/Channels অনুমতি লাগবে। Local public storage ব্যবহার করলে uploaded ছবি দেখার জন্য উপযুক্ত storage link ও web-server write permission লাগবে।
 - আপনার project root-এ সংস্করণ যাচাইয়ের জন্য, যেখানে ফাইলগুলো আছে:
@@ -21,9 +23,11 @@
 
   আপনার project-এ package path আলাদা হলে সেখানকার `Core.php` দেখুন। API ফাইল থাকা একাই compatibility প্রমাণ করে না।
 
-## ইনস্টলেশন
+## আগে থেকে ইনস্টল করা Bagisto-তে শুধু থিম যোগ
 
-GitHub থেকে আলাদা checkout নিয়ে cPanel Terminal দিয়ে নিয়ন্ত্রিতভাবে আপডেট করার নির্দেশনা: [CPANEL-GITHUB-BN.md](CPANEL-GITHUB-BN.md)। এটি পুরো Bagisto project-এ সরাসরি `git pull` না করে শুধু থিমের ফাইল backup-সহ copy করে।
+এই অংশটি **অন্য একটি ইতিমধ্যে চালু Bagisto project**-এ শুধু থিম যোগ করার জন্য। এই repository থেকে নতুন পূর্ণ Bagisto staging তৈরি করার সীমা ও নির্দেশনা [BAGISTO-PROJECT-BN.md](BAGISTO-PROJECT-BN.md)-তে আছে।
+
+GitHub থেকে আলাদা checkout নিয়ে cPanel Terminal দিয়ে নিয়ন্ত্রিতভাবে আপডেট করার নির্দেশনা: [CPANEL-GITHUB-BN.md](CPANEL-GITHUB-BN.md)। এটি পুরো Bagisto project-এ সরাসরি `git pull` না করে শুধু থিমের ফাইল backup-সহ copy করে; core source বা dependencies update করে না।
 
 ### ১. ব্যাকআপ ও staging
 
@@ -33,9 +37,9 @@ GitHub থেকে আলাদা checkout নিয়ে cPanel Terminal দি
 
 ### ২. ফাইল যোগ ও provider নিবন্ধন
 
-ZIP extract করুন। তার `app/AponBasket/`, `resources/themes/aponbasket/` ও `public/themes/shop/aponbasket/` নিজ নিজ একই path-এ Bagisto project root-এ merge/copy করুন। যেসব ফাইলের নাম মিলে যাচ্ছে সেগুলো প্রতিস্থাপিত হবে—আগে backup ও তুলনা করুন। অন্য `app`, `resources` বা `public` ফোল্ডার **পুরোপুরি replace করবেন না**। `preview/` ও `tests/` থিম চালানোর জন্য আবশ্যক নয়; চাইলে পরীক্ষার জন্য রাখুন।
+আলাদা checkout বা theme ZIP থেকে শুধু `app/AponBasket/`, `resources/themes/aponbasket/` ও `public/themes/shop/aponbasket/` নিজ নিজ একই path-এ লক্ষ্য Bagisto project root-এ merge/copy করুন। যেসব ফাইলের নাম মিলে যাচ্ছে সেগুলো প্রতিস্থাপিত হবে—আগে backup ও তুলনা করুন। অন্য `app`, `resources` বা `public` ফোল্ডার **পুরোপুরি replace করবেন না**। `preview/` ও `tests/` থিম চালানোর জন্য আবশ্যক নয়; চাইলে পরীক্ষার জন্য রাখুন।
 
-Bagisto project-এর `bootstrap/providers.php`-এ বিদ্যমান provider-গুলোর পাশে নিচের একটি লাইন যোগ করুন; পুরো ফাইল replace করবেন না:
+এই repository-এর `bootstrap/providers.php`-এ provider আগে থেকেই নিবন্ধিত। **অন্য ইনস্টল করা Bagisto project-এ** থিম copy করলে সেই project-এর `bootstrap/providers.php`-এ বিদ্যমান provider-গুলোর পাশে নিচের একটি লাইন নিজে যোগ করতে হবে; পুরো ফাইল replace করবেন না:
 
 ```php
 return [
@@ -118,6 +122,7 @@ Provider সরানো, migration rollback বা database table/marker মু
 শুধু একটি **আলাদা, disposable test database ও storage**-এ optional tests চালাতে (Bagisto dependencies ও provider installed থাকতে হবে):
 
 ```bash
+php tests/standalone/project.php  # পুরো Bagisto source checkout-এ project ও assets যাচাই
 php tests/standalone/theme.php legacy
 php tests/standalone/theme.php modern
 php tests/standalone/installer.php
