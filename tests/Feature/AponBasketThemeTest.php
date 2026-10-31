@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Webkul\Admin\Tests\AdminTestCase;
 use Webkul\Core\Models\Channel;
+use Webkul\Core\Models\Locale;
 use Webkul\Theme\Models\Section;
 use Webkul\Theme\SectionSchema;
 
@@ -115,7 +116,7 @@ final class AponBasketThemeTest extends AdminTestCase
             ->assertDontSee('ab-hero__copy', false);
     }
 
-    public function test_default_footer_credits_store_and_designer_on_storefront_pages(): void
+    public function test_default_footer_credits_store_and_developer_in_english_on_storefront_pages(): void
     {
         $this->artisan('aponbasket:install', ['--channel' => $this->channel->code])->assertExitCode(0);
         core()->setCurrentChannel($this->channel);
@@ -124,10 +125,27 @@ final class AponBasketThemeTest extends AdminTestCase
             $this->get($url)
                 ->assertOk()
                 ->assertSee('© '.date('Y').' AponBasket.')
-                ->assertSee('সর্বস্বত্ব সংরক্ষিত।')
-                ->assertSee('ডিজাইন: ঢাকা ওলা')
+                ->assertSee('All rights reserved.')
+                ->assertSee('Developed by DhakaWala Developer Team')
+                ->assertDontSee('সর্বস্বত্ব সংরক্ষিত।')
+                ->assertDontSee('ডিজাইন: ঢাকা ওলা')
                 ->assertDontSee('Webkul Software (Registered in India)');
         }
+    }
+
+    public function test_default_footer_remains_in_english_for_the_bengali_locale(): void
+    {
+        $bengali = Locale::query()->firstOrCreate(['code' => 'bn'], ['name' => 'Bengali', 'direction' => 'ltr']);
+        $this->channel->locales()->syncWithoutDetaching([$bengali->id]);
+        $this->artisan('aponbasket:install', ['--channel' => $this->channel->code])->assertExitCode(0);
+        core()->setCurrentChannel($this->channel->fresh());
+
+        $this->get(route('shop.home.index', ['channel' => $this->channel->code, 'locale' => 'bn']))
+            ->assertOk()
+            ->assertSee('lang="bn"', false)
+            ->assertSee('All rights reserved.')
+            ->assertSee('Developed by DhakaWala Developer Team')
+            ->assertDontSee('ডিজাইন: ঢাকা ওলা');
     }
 
     public function test_footer_keeps_merchant_copyright_setting_and_sanitizes_it(): void
@@ -144,7 +162,7 @@ final class AponBasketThemeTest extends AdminTestCase
         $this->get(route('shop.home.index', ['channel' => $this->channel->code, 'locale' => $this->locale]))
             ->assertOk()
             ->assertSee('নিজস্ব কপিরাইট')
-            ->assertDontSee('ডিজাইন: ঢাকা ওলা')
+            ->assertDontSee('Developed by DhakaWala Developer Team')
             ->assertDontSee('<script>alert(42)</script>', false)
             ->assertDontSee('{{ 7 * 7 }}', false)
             ->assertSee('<span v-pre>', false);
@@ -153,7 +171,7 @@ final class AponBasketThemeTest extends AdminTestCase
         core()->setCurrentChannel($other);
         $this->get(route('shop.home.index', [
             'channel' => $other->code, 'locale' => $other->locales->firstOrFail()->code,
-        ]))->assertOk()->assertSee('ডিজাইন: ঢাকা ওলা')->assertDontSee('নিজস্ব কপিরাইট');
+        ]))->assertOk()->assertSee('Developed by DhakaWala Developer Team')->assertDontSee('নিজস্ব কপিরাইট');
     }
 
     public function test_order_and_visibility_are_drafted_then_published(): void
@@ -196,7 +214,7 @@ final class AponBasketThemeTest extends AdminTestCase
             ->assertOk()
             ->assertDontSee('themes/shop/aponbasket/css/aponbasket.css', false)
             ->assertSee('Webkul Software (Registered in India)')
-            ->assertDontSee('ডিজাইন: ঢাকা ওলা');
+            ->assertDontSee('Developed by DhakaWala Developer Team');
     }
 
     public function test_bengali_editor_font_is_scoped_to_aponbasket_sections(): void

@@ -5,6 +5,6 @@
     @if ($copyrightContent)
         {!! clean_content((string) $copyrightContent) !!}
     @else
-        © {{ date('Y') }} AponBasket. সর্বস্বত্ব সংরক্ষিত। <span aria-hidden="true">|</span> ডিজাইন: ঢাকা ওলা
+        © {{ date('Y') }} AponBasket. All rights reserved. <span aria-hidden="true">|</span> Developed by DhakaWala Developer Team
     @endif
 </span>
